@@ -1,32 +1,39 @@
 import './App.css';
+import { useState } from 'react';
 
 function App() {
-  function oddNumbers(l, r) {
-    // Write your code here
-    let arr = [];
+  const [backgroundColor, setBackgroundColor] = useState('red');
+  const [enable, setEnable] = useState(false);
 
-    for (let i = l; i <= r; i / 2 !== 0) {
-      arr.push(i);
+  const changeColor = () => {
+    if (backgroundColor === 'red') {
+      setBackgroundColor('blue');
+    } else {
+      setBackgroundColor('red');
     }
+  };
 
-    console.log(arr);
-  }
+  const changeEnable = () => {
+    if (enable) {
+      setEnable(false);
+    } else {
+      setEnable(true);
+    }
+  };
 
-  oddNumbers(5, 11);
   return (
     <div>
-      <button style={{ backgroundColor: 'red' }}>Change to blue</button>
+      <button
+        style={{ backgroundColor: backgroundColor }}
+        onClick={changeColor}
+        disabled={enable}
+      >
+        Change to {backgroundColor === 'red' ? 'blue' : 'red'}
+      </button>
+      <input type='checkbox' id='for-disable-button' onChange={changeEnable} />
+      <label htmlFor='for-disable-button'>disable button</label>
     </div>
   );
 }
 
 export default App;
-
-// function findNumber(arr, k) {
-//   // Write your code here
-//   if (arr.includes(k)) {
-//     return 'yes';
-//   } else {
-//     return 'no';
-//   }
-// }
