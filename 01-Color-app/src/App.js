@@ -1,6 +1,10 @@
 import './App.css';
 import { useState } from 'react';
 
+export function replaceCamelWithSpaces(colorName) {
+  return colorName.replace(/\B([A-Z])\B/g, ' $1');
+}
+
 function App() {
   const [backgroundColor, setBackgroundColor] = useState('red');
   const [enable, setEnable] = useState(false);
@@ -16,8 +20,10 @@ function App() {
   const changeEnable = () => {
     if (enable) {
       setEnable(false);
+      setBackgroundColor('red');
     } else {
       setEnable(true);
+      setBackgroundColor('gray');
     }
   };
 
@@ -28,7 +34,7 @@ function App() {
         onClick={changeColor}
         disabled={enable}
       >
-        Change to {backgroundColor === 'red' ? 'blue' : 'red'}
+        Change to {backgroundColor === 'red' || enable ? 'blue' : 'red'}
       </button>
       <input type='checkbox' id='for-disable-button' onChange={changeEnable} />
       <label htmlFor='for-disable-button'>disable button</label>
