@@ -6,21 +6,21 @@ export function replaceCamelWithSpaces(colorName) {
 }
 
 function App() {
-  const [backgroundColor, setBackgroundColor] = useState('red');
+  const [backgroundColor, setBackgroundColor] = useState('MediumVioletRed');
   const [enable, setEnable] = useState(false);
 
   const changeColor = () => {
-    if (backgroundColor === 'red') {
-      setBackgroundColor('blue');
+    if (backgroundColor === 'MediumVioletRed') {
+      setBackgroundColor('MidnightBlue');
     } else {
-      setBackgroundColor('red');
+      setBackgroundColor('MediumVioletRed');
     }
   };
 
   const changeEnable = () => {
     if (enable) {
       setEnable(false);
-      setBackgroundColor('red');
+      setBackgroundColor('MediumVioletRed');
     } else {
       setEnable(true);
       setBackgroundColor('gray');
@@ -34,7 +34,10 @@ function App() {
         onClick={changeColor}
         disabled={enable}
       >
-        Change to {backgroundColor === 'red' || enable ? 'blue' : 'red'}
+        Change to{' '}
+        {backgroundColor === 'MediumVioletRed' || enable
+          ? 'MidnightBlue'
+          : 'MediumVioletRed'}
       </button>
       <input type='checkbox' id='for-disable-button' onChange={changeEnable} />
       <label htmlFor='for-disable-button'>disable button</label>
