@@ -12,7 +12,7 @@ export default function SummaryForm({ setOrderPhase }) {
 
     // pass along to the next phase.
     // The next page will handle submitting order from context.
-    // setOrderPhase('completed');
+    setOrderPhase('completed');
   }
 
   const popover = (
